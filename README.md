@@ -21,7 +21,7 @@ Une figurine sera composé de la manière suivante :
     "_id" : ObjectId("5db2e3dd4b4b28760519d7e3"),
     "Price" : {
         "Quantity" : "120",
-        "Devise" : "Euro"
+        "Currency" : "Euro"
     },
     "Name" : "Soldat",
     "pointValue" : "25"
