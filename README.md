@@ -27,24 +27,20 @@ Une figurine sera composé de la manière suivante :
     "pointValue" : "25"
     "ExpectedTime" : "35mn",
     "Story" : "Common soldier from a Hive, Cadia is here.",
-    "Faction" : "Imperium of Men",
+    "Faction" : "Imperium of Men"
 }
 
-Une liste sera composé de la manière suivante si enregistré :
+Une liste sera composé de la manière suivante (si enregistré {optionnel}) :
 {
     "title" : "Cadia's main list",
     "Composition" : [ 
         {
-            "date" : ISODate("2014-03-03T00:00:00.000Z"),
-            "grade" : "A",
-            "score" : 2
+            "_id" : ObjectId("5db2e3dd4b4b28760519d7e3"),
         }, 
         {
-            "date" : ISODate("2013-09-11T00:00:00.000Z"),
-            "grade" : "A",
-            "score" : 6
+            "_id" : ObjectId("6A8b2e3dd4b4b28960519d77"),
         }
-    ],
+    ]
 }
 
 By CONTE Corentin.
