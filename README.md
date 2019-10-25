@@ -16,7 +16,36 @@ L'export de la liste n'est pas prévu durant le projet mais peux être fait si l
 Les figurines et le thème en général est parti du système de jeu de plateau de Games Workshop: Warhammer 40k.
 Voir : https://www.games-workshop.com/fr-FR/Warhammer-40-000
 
+Une figurine sera composé de la manière suivante :
+{
+    "_id" : ObjectId("5db2e3dd4b4b28760519d7e3"),
+    "Price" : {
+        "Quantity" : "120",
+        "Devise" : "Euro"
+    },
+    "Name" : "Soldat",
+    "pointValue" : "25"
+    "ExpectedTime" : "35mn",
+    "Story" : "Common soldier from a Hive, Cadia is here.",
+    "Faction" : "Imperium of Men",
+}
 
+Une liste sera composé de la manière suivante si enregistré :
+{
+    "title" : "Cadia's main list",
+    "Composition" : [ 
+        {
+            "date" : ISODate("2014-03-03T00:00:00.000Z"),
+            "grade" : "A",
+            "score" : 2
+        }, 
+        {
+            "date" : ISODate("2013-09-11T00:00:00.000Z"),
+            "grade" : "A",
+            "score" : 6
+        }
+    ],
+}
 
 By CONTE Corentin.
 
