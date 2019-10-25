@@ -8,6 +8,7 @@ Price,Name,pointValue,ExpectedTime,Story,Faction.
 L'objectif est d'avoir un fonctionnement en réplicat.
 On cherche à avoir un store puis un créateur de liste. On peut parler de liste dans le cas d'une liste d'achat ou d'une liste de compétition.
 Elles sont composé de la même manière.
+Les produits(figurines) étant officiel elles requiert une intervention administrateur pour importer les figurines.(l'utilisateurs n'a pas le droit de toucher à la liste)
 
 Le projet ne sert pas a acheter les figurines mais à éditer une liste prévisionnel pour achat ou campagne.
 Pourqui ce thème ? La manière de jouer de chaque faction possède des critères différent, Mongo manipulant des objet JSON est adapté.
@@ -43,11 +44,41 @@ Une liste sera composé de la manière suivante (si enregistré {optionnel}) :
     ]
 }
 
+Dans Assets une collection de figurine sera fournie,
+Il sera requis de créer une base de données avec les réplicaSet nécessaire.
+On y créeras 2 collections figurines et listes.
+
+On peut suivre les étapes suivantes afin de créer la base mongoDB et pour plus d'information le récapitulatif du cours se trouve en fin de fichier.
+
+**Les étapes**
+
+
 By CONTE Corentin.
 
-Rappel Utilisation de Mongo :
+Bien faire un réplicaSet puis un arbitre
+On ouvre une fenêtre powershell dans le dossier racine.
+->Démarer le Serveur en mode réplica
+mongod --dbpath <VotreDestinationDeStockage>\data\R0S1 --replSet rs0 --port 27057
+mongod --dbpath <VotreDestinationDeStockage>\data\R0S1 --replSet rs0 --port 27058
+mongod --dbpath <VotreDestinationDeStockage>\data\R0S1 --replSet rs0 --port 27059
+->Initialisé le réplicaSet
+-> Se connecter au Replica principal.
+rs.initiate();
+->Démarer le serveur secondaire
+
+->Sur le Principal ajouter le réplica dans le Set
+
+->Démarer le serveur Arbitre
+
+->Sur le Principal ajouter l'arbitre dans le Set
+
+->Importer les fichiers figurines.json et listes.json
+mongoimport --port 27058 --db PathToWarhammer --collection figurines ./assets/figurines.json
+mongoimport --port 27058 --db PathToWarhammer --collection listes ./assets/listes.json
 
 
+
+/////**Rappel Utilisation de Mongo :**/////
 **Info**
 On définie le port 27058 comme étant le Primary par defaut dans ce fichier
 
