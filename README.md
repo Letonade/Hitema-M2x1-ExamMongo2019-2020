@@ -74,7 +74,7 @@ rs.addArb("localhost:27030")
 mongoimport --port 27058 --db PathToWarhammer --collection figurines <racineProjet>/assets/figurines.json
 mongoimport --port 27058 --db PathToWarhammer --collection listes <racineProjet>/assets/listes.json
 
-By CONTE Corentin.
+By CONTE Corentin and ARINOUCHKINE Aliaksandr.
 
 /////**Rappel Utilisation de Mongo :**/////
 **Info**
