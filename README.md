@@ -33,6 +33,7 @@ Une figurine sera composé de la manière suivante :
 
 Une liste sera composé de la manière suivante (si enregistré {optionnel}) :
 {
+    "_id" : ObjectId("1dF2e3dd4b4b28760519A9F8"),
     "title" : "Cadia's main list",
     "Composition" : [ 
         {
