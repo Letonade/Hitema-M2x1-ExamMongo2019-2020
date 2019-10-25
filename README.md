@@ -51,27 +51,27 @@ On y créeras 2 collections figurines et listes.
 On peut suivre les étapes suivantes afin de créer la base mongoDB et pour plus d'information le récapitulatif du cours se trouve en fin de fichier.
 
 **Les étapes**
-On ouvre une fenêtre powershell dans le dossier racine.
+On ouvre une fenêtre powershell dans le dossier racine du mongo.
 ->Démarer le Serveur en mode réplica
 mongod --dbpath <VotreDestinationDeStockage>\data\R0S1 --replSet rs0 --port 27057
 ->Initialisé le réplicaSet
-*Se connecter au Replica principal avec .\mongo.exe --port 27057
+*Se connecter au Replica principal avec mongo --port 27057
 rs.initiate();
 ->Démarer les serveurs secondaire
 mongod --dbpath <VotreDestinationDeStockage>\data\R0S2 --replSet rs0 --port 27058
 mongod --dbpath <VotreDestinationDeStockage>\data\R0S3 --replSet rs0 --port 27059
 ->Sur le Principal ajouter le réplica dans le Set
-*Se connecter au Replica principal avec .\mongo.exe --port 27057
+*Se connecter au Replica principal avec mongo --port 27057
 rs.add("localhost:27058");
 rs.add("localhost:27059");
 ->Démarer le serveur Arbitre
 mongod --port 30000 --dbpath <VotreDestinationDeStockage>\data\arb --replSet rs0
 ->Sur le Principal ajouter l'arbitre dans le Set
-*Se connecter au Replica principal avec .\mongo.exe --port 27057
+*Se connecter au Replica principal avec mongo --port 27057
 rs.addArb("localhost:27030")
 ->Importer les fichiers figurines.json et listes.json
-mongoimport --port 27058 --db PathToWarhammer --collection figurines ./assets/figurines.json
-mongoimport --port 27058 --db PathToWarhammer --collection listes ./assets/listes.json
+mongoimport --port 27058 --db PathToWarhammer --collection figurines <racineProjet>/assets/figurines.json
+mongoimport --port 27058 --db PathToWarhammer --collection listes <racineProjet>/assets/listes.json
 
 By CONTE Corentin.
 
