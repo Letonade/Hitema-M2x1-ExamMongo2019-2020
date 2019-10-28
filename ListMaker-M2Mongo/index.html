@@ -10,7 +10,7 @@
 		<!--<script src="./Javascript/bootstrap.js"></script>-->
 		<script src="./Javascript/Custom.js"></script>
 	</head>
-	<body>
+	<body onload="_init();">
 		<!-- Head Nav -->
 		<nav class="navbar navbar-light text-white bg-primary h1">List Maker</nav>
 		<!-- Body -->
@@ -21,15 +21,16 @@
 				<!-- Colonne Stock -->
 				<div class="col-md-4 bg-light py-3 border-left rounded" >
 					<div class="row px-4 my-1">
-						<select class="col-12 form-control" id="exampleFormControlSelect1" onchange="selectFactionOnChange(this);">
+						<select class="col-12 form-control" id="listSelectFactionStock" onchange="selectFactionOnChange(this);">
 							<option value="All">All</option>
 							<option value="Imperium of Men">Imperium of Men</option>
 							<option value="Tau">Tau</option>
 						</select>
 					</div>
 					<nav class="navbar text-white bg-secondary h1 rounded-left mt-2"> Le stock </nav>
-					<ul class="list-group custom-overflow">	
+					<ul class="list-group custom-overflow" id="listStock">	
 						<div class="row px-4 my-2">
+							<input type="hidden" name="id" value="0">
 							<div class="col-10 border bg-white rounded p-2 text-muted shadow">
 								<div class="d-flex border-bottom">
 									<div>Column 1</div>
@@ -42,7 +43,7 @@
 								</div>
 							</div>
 							<input type="button" name="Add-Button" value="+" class="col-2 btn btn-secondary rounded shadow custom-compteur">
-						</div>	
+						</div>
 					</ul>
 				</div>
 				<!-- Colonne Liste -->
@@ -53,7 +54,7 @@
 						<input type="button" name="Load-Button" value="Load" class="col-2 btn btn-secondary rounded-left shadow">
 					</div>
 					<nav class="navbar text-white bg-secondary h1 rounded-right mt-2"> La liste </nav>
-					<ul class="list-group custom-overflow">	
+					<ul class="list-group custom-overflow" id="listListe">	
 						<div class="row px-4 my-2">
 							<div class="col-10 border bg-white rounded p-2 text-muted shadow">
 								<div class="d-flex border-bottom">

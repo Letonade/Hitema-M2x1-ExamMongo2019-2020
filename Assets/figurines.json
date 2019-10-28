@@ -1,7 +1,8 @@
 {
 	"Price" : {
 	    "Quantity" : "0.90",
-	    "Currency" : "Euro"
+	    "Currency" : "€",
+	    "CurrencyName" : "Euro"
 	},
 		"Name" : "Guardsman",
 		"pointValue" : "25",
@@ -12,7 +13,8 @@
 {
 	"Price" : {
 	    "Quantity" : "1.10",
-	    "Currency" : "Euro"
+	    "Currency" : "€",
+	    "CurrencyName" : "Euro"
 	},
 		"Name" : "Guardsman avec fuseur",
 		"pointValue" : "30",
@@ -23,7 +25,8 @@
 {
 	"Price" : {
 	    "Quantity" : "1",
-	    "Currency" : "Euro"
+	    "Currency" : "€",
+	    "CurrencyName" : "Euro"
 	},
 		"Name" : "Commissaire",
 		"pointValue" : "28",
@@ -34,7 +37,8 @@
 {
     "Price" : {
         "Quantity" : "1.10",
-        "Currency" : "Euro"
+        "Currency" : "€",
+        "CurrencyName" : "Euro"
     },
     	"Name" : "Soldat de feu",
     	"pointValue" : "25",
@@ -45,7 +49,8 @@
 {
     "Price" : {
         "Quantity" : "1.10",
-        "Currency" : "Euro"
+        "Currency" : "€",
+        "CurrencyName" : "Euro"
     },
     	"Name" : "Armure Crysis",
     	"pointValue" : "78",

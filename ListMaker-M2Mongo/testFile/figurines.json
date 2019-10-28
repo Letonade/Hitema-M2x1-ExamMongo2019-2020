@@ -1,5 +1,6 @@
 [
 	{
+		"_id" : "0",
 		"Price" : {
 		    "Quantity" : "0.90",
 		    "Currency" : "Euro"
@@ -11,6 +12,7 @@
 			"Faction" : "Imperium of Men"
 	},
 	{
+		"_id" : "1",
 		"Price" : {
 		    "Quantity" : "1.10",
 		    "Currency" : "Euro"
@@ -22,6 +24,7 @@
 			"Faction" : "Imperium of Men"
 	},
 	{
+		"_id" : "2",
 		"Price" : {
 		    "Quantity" : "1",
 		    "Currency" : "Euro"
@@ -33,6 +36,7 @@
 			"Faction" : "Imperium of Men"
 	},
 	{
+		"_id" : "3",
 	    "Price" : {
 	        "Quantity" : "1.10",
 	        "Currency" : "Euro"
@@ -44,6 +48,7 @@
 	    	"Faction" : "Tau"
 	},
 	{
+		"_id" : "4",
 	    "Price" : {
 	        "Quantity" : "1.10",
 	        "Currency" : "Euro"
