@@ -34,11 +34,12 @@ Une figurine sera composé de la manière suivante :
 {
     "_id" : ObjectId("5db2e3dd4b4b28760519d7e3"),
     "Price" : {
-        "Quantity" : "120",
-        "Currency" : "Euro"
+        "Quantity" : 120,
+        "Currency" : "€",
+        "CurrencyName" : "Euro"
     },
     "Name" : "Soldat",
-    "pointValue" : "25"
+    "pointValue" : 25,
     "ExpectedTime" : "35mn",
     "Story" : "Common soldier from a Hive, Cadia is here.",
     "Faction" : "Imperium of Men"
@@ -52,11 +53,11 @@ Une liste sera composé de la manière suivante (si enregistré {optionnel}) :
     "Composition" : [ 
         {
             "_id" : ObjectId("5db2e3dd4b4b28760519d7e3"),
-        "Nb" : "1",
+        "Nb" : 1,
         }, 
         {
             "_id" : ObjectId("6A8b2e3dd4b4b28960519d77"),
-        "Nb" : "5",
+        "Nb" : 5,
         }
     ]
 }
