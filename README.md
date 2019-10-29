@@ -67,6 +67,128 @@ Dans Assets une collection de figurine sera fourni,
 Il sera requis de créer une base de données avec les réplicaSet nécessaire.
 On y créeras 2 collections figurines et listes.
 
+# Installation de l'application
+
+
+## GIT
+
+On commence l'installation de l'application. Première étape et de l'initialiser l'application avec le git de notre projet.
+Pour le faire on aura besoin de git. Si la commande git n'est pas installé sur l'ordinateur veuillez d'abord installer la commande git.
+(Voici un tuto pour ça : "https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/" ).
+
+On va copie le projet sur l'ordinateur avec la commande "git clone".
+Pour cela rende-vous avec votre ligne de commande dans le dossier où vous voulez copier le projet 
+et exécuter la commande suivante:
+
+```
+git clone https://github.com/Letonade/Hitema-M2x1-ExamMongo2019-2020.git
+```
+
+Pour rappel l'application tourne avec PHP de se fait il faut un serveur capable d'interpréter du PHP.
+
+S'il y a des difficultés à l'installation de la commande git on peut passer cette étape.
+Pour cela on peut passer par un téléchargement direct du projet.
+Voici les étapes :
+- Se rendre sur la page : "https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/"
+- Clicker sur le bouton vert "Clone or download"
+- Clicker sur le bouton "Download ZIP"
+- Choisir l'endroit où on veut copier l'objet
+
+**! Cette méthode nécessite un moyen de décompresser un ZIP. !**
+
+##Driver Mongo pour PHP
+
+Le plugin "ext mongoDB" est le plugin php qui permet l'intégration de MongoDB dans le PHP.
+ 
+### Windows 
+ 
+La première étape de l'installation de ce driver est la création d'une page php suivante :
+ ```
+ <?php
+    phpinfo();
+ ?>
+ ```
+ 
+Cette page nous permettra de se renseigner sur les différentes informations qu'on aura besoin par la suite.
+Pour que cette page fonctionne il nous faudra le mettre sur un serveur local ou distant.
+Il existe plusieurs solutions gratuites de serveurs local WAMP/XAMPP (Et pour Mac spécifiquement MAMP).
+
+Les informations qu'on veut collecter sur cette page sont les suivantes :
+- si Thread Safety  est enabled
+- votre archtecture (x64/x86)
+- votre version PHP
+
+
+La deuxième étape de l'installation est de se rendre sur le site PECL qui contient les fichiers d'installation de MongoDB.
+
+Voici le lien du site PECL : "https://pecl.php.net/package/mongodb". 
+
+On va prendre les informations recueillit à la première étape. 
+En fonction de ces informations on va faire le choix de fichier a télécharger.
+
+**! Le lien sur lequel il faut clicker est le lien avec texte "DLL" après le logo de Windows !**
+
+Sur cette page on va voir les differentes version des plugins MongoDB.
+
+ Chaque version à ses propres version PHP sur laquelle elle se base.
+En fonction de notre version de PHP on va choisir la dernière version stable de fichier dll de mongo.
+
+Quand on a choisi notre version de mongo il nous faudra choisir le bon fichier dll. Voici les critères:
+- Si notre Thread Safety est enabled ça veut dire qu'on doit choisire le lien avec mention de Thread Safe (TS), 
+si non il nous faudra choisire un avec la mention Non Thread Safe(NTS).
+- Et on va choisir le lien qui fait référence a notre type d'architecture (soit x64 ou soit x86).
+
+On télécharge le fichier choisit. On décompresse le ZIP.
+
+Les fichiers qui sont à l'intérieur on va les placer dans le répertoire "ext" du dossier php de notre serveur.
+(Exemple sur wamp64 wamp64\bin\php\php7.2.10\ext)
+
+Suite à ça on va aller dans le dossier php et modifier le fichier "php.ini".
+Il faudrait aller dans la section extension de ce fichier qui représente les paramètre de notre PHP.
+Et on ajoute la ligne suivante :
+
+```
+    extension=php_mongo.dll
+```
+
+**! Suivant la version il faudra modifier dans cette ligne de commande le mongo par mongodb. 
+Il le faudra voir au moment de la décompression du fichier télécharge et le nom du dll, si c'est mongo ou mongodb !**
+
+Suite à ça le dll est normalement c'est installe. Pour le vérifier fait en ligne de commande de votre serveur la ligne suivante : 
+
+```
+    php -v
+```
+
+Normalement vous ne devrait pas avoir d'erreur ou de warning concernant mongo dedans. 
+
+Ou on peut faire un deuxième test c'est de revoir la page qu'on a créée au tout début avec les informations, le mongoDB doit apparaitre dedans.
+(Ce test n'est pas 100% viable, car il dépend du serveur et s'il a mis ajour ces informations)
+
+###Linux (Not Tested)
+
+Pour Linux on a les lignes de commandes suivante qu'on a besoin d'exécuter :
+
+```
+ git clone https://github.com/mongodb/mongo-php-driver.git
+ cd mongo-php-driver
+ git submodule update --init
+ phpize
+ ./configure
+ make all
+ sudo make install
+```
+
+##Initialisation de l'API
+
+Pour initialiser l'API il faudra se rendre en ligne de commande jusqu'au dossier de notre copie de projet.  
+Entrer dans le répertoire API_MongoDB. 
+Et exécuter la ligne de commande suivante :
+
+```
+    composer install
+```
+
 ## Les étapes pour mongo
 On peut suivre les étapes suivantes afin de créer la base mongoDB et pour plus d'information le récapitulatif du cours se trouve en fin de fichier.
 ```
