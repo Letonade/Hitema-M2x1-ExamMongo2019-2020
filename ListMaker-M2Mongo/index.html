@@ -27,7 +27,10 @@
 							<option value="Tau">Tau</option>
 						</select>
 					</div>
-					<nav class="navbar text-white bg-secondary h1 rounded-left mt-2"> Le stock </nav>
+					<!-- Le stock head -->
+					<div class="row px-4">
+						<div class="p-2 text-white bg-secondary h1 rounded mt-2 col-12 shadow"> Le stock </div>
+					</div>
 					<ul class="list-group custom-overflow" id="listStock">	
 						<div class="row px-4 my-2">
 							<input type="hidden" name="id" value="0">
@@ -49,11 +52,18 @@
 				<!-- Colonne Liste -->
 				<div class="col-lg-7 bg-white py-3">
 					<div class="row px-4 my-1">
-						<input type="text" name="Save-Button" placeholder="List title" class="col-8 border bg-white rounded text-muted shadow form-control-plaintext">
-						<input type="button" name="Save-Button" value="Save" class="col-2 btn btn-primary rounded shadow">
-						<input type="button" name="Load-Button" value="Load" class="col-2 btn btn-secondary rounded-left shadow">
+						<input type="text" name="Save-Button" placeholder="List title" class="col-8 border bg-white rounded text-muted shadow form-control-plaintext" id="listTitle">
+						<input type="button" name="Save-Button" value="Save" class="col-2 btn btn-primary rounded shadow" onclick="saveListe();">
+						<input type="button" name="Load-Button" value="Load" class="col-2 btn btn-secondary rounded-left shadow" onclick="loadListe()">
 					</div>
-					<nav class="navbar text-white bg-secondary h1 rounded-right mt-2"> La liste </nav>
+					<!-- Le stock head -->
+					<div class="row px-4">
+						<div class="p-2 text-white bg-secondary h1 rounded-left mt-2 col-4 shadow"> La liste </div>
+						<div class="p-3 text-white bg-secondary h3 mt-2 col-2 text-center shadow" id="listTempsTotal">0mn</div>
+						<div class="p-3 text-white bg-secondary h3 mt-2 col-2 text-center shadow" id="listCoutTotal">0€</div>
+						<div class="p-3 text-white bg-secondary h3 mt-2 col-2 text-center shadow" id="listPointTotal">0pt</div>
+						<div class="p-2 text-white bg-secondary h1 rounded-right mt-2 col-2 text-center shadow" id="listNbItem">0</div>
+					</div>
 					<ul class="list-group custom-overflow" id="listListe">	
 
 					</ul>

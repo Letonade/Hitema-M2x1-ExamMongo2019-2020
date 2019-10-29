@@ -9,7 +9,7 @@ var leStock = [
 		},
 			"Name" : "Guardsman",
 			"pointValue" : 25,
-			"ExpectedTime" : "35mn",
+			"ExpectedTime" : 35,
 			"Story" : "Common soldier from a Hive, Cadia is here.",
 			"Faction" : "Imperium of Men"
 	},
@@ -21,7 +21,7 @@ var leStock = [
 		},
 			"Name" : "Guardsman avec fuseur",
 			"pointValue" : 30,
-			"ExpectedTime" : "35mn",
+			"ExpectedTime" : 35,
 			"Story" : "Common heavy soldier from a Hive, Cadia is here.",
 			"Faction" : "Imperium of Men"
 	},
@@ -33,7 +33,7 @@ var leStock = [
 		},
 			"Name" : "Commissaire",
 			"pointValue" : 28,
-			"ExpectedTime" : "40mn",
+			"ExpectedTime" : 40,
 			"Story" : "Common soldier from a Hive, Cadia is here.",
 			"Faction" : "Imperium of Men"
 	},
@@ -45,7 +45,7 @@ var leStock = [
 	    },
 	    	"Name" : "Soldat de feu",
 	    	"pointValue" : 25,
-	    	"ExpectedTime" : "45mn",
+	    	"ExpectedTime" : 45,
 	    	"Story" : "Soldier from the great Tau empire.",
 	    	"Faction" : "Tau"
 	},
@@ -57,7 +57,7 @@ var leStock = [
 	    },
 	    	"Name" : "Armure Crysis",
 	    	"pointValue" : 78,
-	    	"ExpectedTime" : "70mn",
+	    	"ExpectedTime" : 70,
 	    	"Story" : "Shock Exo-Armor from the great Tau empire.",
 	    	"Faction" : "Tau"
 	}
@@ -69,21 +69,14 @@ var laListe = {
 
 // Custom
 
-function selectFactionDeployOption(){
-	var txtOptions = '<option value="All">All</option>';
-	var tabFactions = ["All"];
-	leStock.forEach( function(element, index){
-		if (tabFactions.indexOf(element.Faction) == -1) {
-			tabFactions.push(element.Faction);
-			txtOptions += '<option value="'+element.Faction+'">'+element.Faction+'</option>'
-		}
-	});
-	$('#listSelectFactionStock').html(txtOptions);
-	return(true);
+function testFunc(){
+	return("TESTFUNC Ok"); 
 }
 
+//------- Opération de liste -------//
 function selectFactionOnChange(obj){
 	replaceStock(obj.options[obj.selectedIndex].value);
+	return("SELECTFACTIONONCHANGE Success");
 }
 
 function addToListe(id){
@@ -94,6 +87,8 @@ function addToListe(id){
 		laListe.Composition.push({"_id" : id,"Nb" : 1, });
 	}
 	replaceListe();
+	updateTotaux(id);
+	return("ADDTOLISTE Success");
 }
 
 function minusToListe(id){
@@ -105,8 +100,40 @@ function minusToListe(id){
 		laListe.Composition.splice(pos, 1);
 	}
 	replaceListe();
+	updateTotaux(id);
+	return("MINUSTOLISTE Success");
 }
 
+function updateTotaux(){
+	var pos = 0, listCoutTotal = 0, listTempsTotal = 0, listPointTotal = 0;
+	laListe.Composition.map(function(element) {
+		pos = leStock.map(function(e) { return e._id; }).indexOf(element._id);
+		listCoutTotal += leStock[pos].Price.Quantity*element.Nb;
+		listTempsTotal += leStock[pos].ExpectedTime*element.Nb;
+		listPointTotal += leStock[pos].pointValue*element.Nb;
+	});
+	$("#listCoutTotal").html((Math.trunc(listCoutTotal*100)/100)+"€");
+	$("#listTempsTotal").html((Math.trunc(listTempsTotal*100)/100)+"mn");
+	$("#listPointTotal").html((Math.trunc(listPointTotal*100)/100)+"pt");
+	$("#listNbItem").html(laListe.Composition.reduce(function(base, toAdd) {return base + toAdd.Nb;}, 0));
+	return("UPDATETOTAUX Success");
+}
+
+//------- Majeur de select -------//
+function selectFactionDeployOption(){
+	var txtOptions = '<option value="All">All</option>';
+	var tabFactions = ["All"];
+	leStock.forEach( function(element, index){
+		if (tabFactions.indexOf(element.Faction) == -1) {
+			tabFactions.push(element.Faction);
+			txtOptions += '<option value="'+element.Faction+'">'+element.Faction+'</option>'
+		}
+	});
+	$('#listSelectFactionStock').html(txtOptions);
+	return("SELECTFACTIONDEPLOYOPTION Success");
+}
+
+//------- Replacer servant à Majer les listes -------//
 function replaceStock(faction){
 	var txt = "";
 	leStock.forEach( function(element, index) {
@@ -116,11 +143,11 @@ function replaceStock(faction){
 			txt += "	<div class='col-10 border bg-white rounded p-2 text-muted shadow'>";
 			txt += "		<div class='d-flex border-bottom'>";
 			txt += "			<div>"+element.Name+"</div>";
-			txt += "			<div class='ml-auto'>"+element.pointValue+"</div>";
+			txt += "			<div class='ml-auto'>"+element.pointValue+"pt</div>";
 			txt += "		</div>";
 			txt += "		<div class='d-flex'>";
 			txt += "			<div class='text-truncate custom-descTrunc' title='"+element.Story+"'>"+element.Story+"</div>";
-			txt += "			<div class='ml-auto'>"+element.ExpectedTime+"</div>";
+			txt += "			<div class='ml-auto'>"+element.ExpectedTime+"mn</div>";
 			txt += "			<div class='ml-auto'>"+element.Price.Quantity+element.Price.Currency+"</div>";
 			txt += "		</div>";
 			txt += "	</div>";
@@ -129,6 +156,7 @@ function replaceStock(faction){
 		}
 	});
 	$('#listStock').html(txt);
+	return("REPLACESTOCK Success");
 }
 
 function replaceListe(){
@@ -140,11 +168,11 @@ function replaceListe(){
 		txt += "	<div class='col-10 border bg-white rounded p-2 text-muted shadow'>";
 		txt += "		<div class='d-flex border-bottom'>";
 		txt += "			<div>"+leStock[pos].Name+"</div>";
-		txt += "			<div class='ml-auto'>"+leStock[pos].pointValue+"</div>";
+		txt += "			<div class='ml-auto'>"+leStock[pos].pointValue+"pt</div>";
 		txt += "		</div>";
 		txt += "		<div class='d-flex'>";
 		txt += "			<div class='text-truncate custom-descTrunc' title='"+leStock[pos].Story+"'>"+leStock[pos].Story+"</div>";
-		txt += "			<div class='ml-auto'>"+leStock[pos].ExpectedTime+"</div>";
+		txt += "			<div class='ml-auto'>"+leStock[pos].ExpectedTime+"mn</div>";
 		txt += "			<div class='ml-auto'>"+leStock[pos].Price.Quantity+leStock[pos].Price.Currency+"</div>";
 		txt += "		</div>";
 		txt += "	</div>";
@@ -152,12 +180,29 @@ function replaceListe(){
 		txt += "</div>	";
 	});
 	$('#listListe').html(txt);
+	return("REPLACELISTE Success");
+}
+
+//------- Save Loads -------//
+function saveListe(){
+	if($("#listTitle").val() == ""){return(alert("Merci de remplir le titre."))}
+	// Sauvegarder en base la bdd
+	replaceListe();
+}
+
+function loadListe(){
+	if($("#listTitle").val() == ""){return(alert("Merci de remplir le titre."))}
+	// Charger la variable laListe
+	replaceListe();
 }
 
 
+//------- Fonctionné Onloadé depuis le body -------//
 function _init(){
+	// Remplir la variable LeStock depuis la Bdd
 	selectFactionDeployOption();
 	replaceStock("All");
 	replaceListe();
 	$('#listSelectFactionStock').val("All").change();
+	return("_INIT Success");
 }
