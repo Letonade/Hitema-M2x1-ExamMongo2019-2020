@@ -180,6 +180,22 @@ rs.addArb("localhost:27030")
 mongoimport --port 27058 --db PathToWarhammer --collection figurines <racineProjet>/assets/figurines.json
 mongoimport --port 27058 --db PathToWarhammer --collection listes <racineProjet>/assets/listes.json
 ```
+
+##Serveur API
+
+### Changement de port dans API
+
+Il faut se rendre dans le répertoire du projet et aller dans **API_MongoDB/config** et modifier le fichier "services.yaml".
+Dans les lignes suivantes il faut modifier le port 27017 au port du serveur Primaire :
+
+```
+mongodb_server: "mongodb://localhost:27017"
+env(MONGODB_URL): 'mongodb://localhost:27017'
+```
+### Lancement du serveur API
+
+A partir du cmd on se rend à la position du projet dans le repertoire API_MongoDB puis on éxécute la commande suivante:```php bin/console server:run```
+
 By CONTE Corentin and ARINOUCHKINE Aliaksandr.
 
 /////**Rappel Utilisation de Mongo :**/////
