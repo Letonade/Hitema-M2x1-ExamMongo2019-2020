@@ -7,11 +7,11 @@ var leStock = [
 		    "Quantity" : 0.90,
 		    "Currency" : "€"
 		},
-			"Name" : "Guardsman",
-			"pointValue" : 25,
-			"ExpectedTime" : 35,
-			"Story" : "Common soldier from a Hive, Cadia is here.",
-			"Faction" : "Imperium of Men"
+		"Name" : "Guardsman",
+		"pointValue" : 25,
+		"ExpectedTime" : 35,
+		"Story" : "Common soldier from a Hive, Cadia is here.",
+		"Faction" : "Imperium of Men"
 	},
 	{
 		"_id" : "1",
