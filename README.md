@@ -135,6 +135,7 @@ Suivant la version de "ext mongoDB" on ajoute dans la section **extension** soit
 1. ```extension=php_mongo.dll```
 2. ```extension=php_mongodb.dll```
 On peut alors vérifier l'installation du plugin en ligne de commande :```php -v```
+
 **Nous ne devrions pas avoir d'erreur ou de warning concernant mongo suite à cette commande**
 
 ### Linux (Not Tested)
@@ -152,13 +153,7 @@ On éxécuteras les lignes de commandes suivantes:
 
 ## Initialisation de l'API
 
-Pour initialiser l'API il faudra se rendre en ligne de commande jusqu'au dossier de notre copie de projet.  
-Entrer dans le répertoire API_MongoDB. 
-Et exécuter la ligne de commande suivante :
-
-```
-    composer install
-```
+A partir du cmd on se rend à la position du projet dans le repertoire API_MongoDB puis on éxécute la commande suivante:```composer install```
 
 ## Les étapes pour mongo
 On peut suivre les étapes suivantes afin de créer la base mongoDB et pour plus d'information le récapitulatif du cours se trouve en fin de fichier.
@@ -299,9 +294,3 @@ Import sur le mongos
 ./mongoimport --db <NomDB> --collection <NomCollection> --port <PortMongos> <fichierJSONAImporter>
 Ex: ./mongoimport --db testDB --collection test --port 27050 ../../restaurants.json
 On peut consulter le status (mongo --port 27050 --eval "sh.status()")
-
-
-
-
-
-
