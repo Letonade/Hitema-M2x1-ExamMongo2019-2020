@@ -78,9 +78,13 @@ On va alors copier le projet sur l'ordinateur avec la commande "git clone" de la
 1. A partir du cmd on se rend à la position souhaité pour stocker le projet.
 2. on éxécute la commande suivante :```git clone https://github.com/Letonade/Hitema-M2x1-ExamMongo2019-2020.git```
     Cette dernière devrait copier le projet depuis github.
-Pour rappel l'application tourne avec PHP de se fait il faut un serveur capable d'interpréter du PHP tel qu'apache.
-2. (auxilière): on peut aussi passer par un téléchargement direct du projet.
+    
+**Pour rappel l'application tourne avec PHP de se fait il faut un serveur capable d'interpréter du PHP tel qu'apache.**
+
+(auxilière): on peut aussi passer par un téléchargement direct du projet.
+
 **Cette méthode nécessite un moyen de décompresser un ZIP.**
+
     2. a.Se rendre sur la page : "https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/"
     2. b.Clicker sur le bouton vert "Clone or download"
     2. c.Clicker sur le bouton "Download ZIP"
