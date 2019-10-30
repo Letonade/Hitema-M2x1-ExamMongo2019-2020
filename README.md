@@ -68,33 +68,23 @@ Il sera requis de créer une base de données avec les réplicaSet nécessaire.
 On y créeras 2 collections figurines et listes.
 
 # Installation de l'application
-
-
 ## GIT
 
-On commence l'installation de l'application. Première étape et de l'initialiser l'application avec le git de notre projet.
-Pour le faire on aura besoin de git. Si la commande git n'est pas installé sur l'ordinateur veuillez d'abord installer la commande git.
-(Voici un tuto pour ça : "https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/" ).
+On commence par initialiser l'application avec le git de notre projet.
+Si git n'est pas installé merci de procédé à son installation, le tutoriel au lien suivant peux vous aider :
+**https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/**
 
-On va copie le projet sur l'ordinateur avec la commande "git clone".
-Pour cela rende-vous avec votre ligne de commande dans le dossier où vous voulez copier le projet 
-et exécuter la commande suivante:
-
-```
-git clone https://github.com/Letonade/Hitema-M2x1-ExamMongo2019-2020.git
-```
-
-Pour rappel l'application tourne avec PHP de se fait il faut un serveur capable d'interpréter du PHP.
-
-S'il y a des difficultés à l'installation de la commande git on peut passer cette étape.
-Pour cela on peut passer par un téléchargement direct du projet.
-Voici les étapes :
-- Se rendre sur la page : "https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/"
-- Clicker sur le bouton vert "Clone or download"
-- Clicker sur le bouton "Download ZIP"
-- Choisir l'endroit où on veut copier l'objet
-
-**! Cette méthode nécessite un moyen de décompresser un ZIP. !**
+On va alors copier le projet sur l'ordinateur avec la commande "git clone" de la manière suivante:
+1. A partir du cmd on se rend à la position souhaité pour stocker le projet.
+2. on éxécute la commande suivante :```git clone https://github.com/Letonade/Hitema-M2x1-ExamMongo2019-2020.git```
+    Cette dernière devrait copier le projet depuis github.
+Pour rappel l'application tourne avec PHP de se fait il faut un serveur capable d'interpréter du PHP tel qu'apache.
+2. (auxilière): on peut aussi passer par un téléchargement direct du projet.
+**Cette méthode nécessite un moyen de décompresser un ZIP.**
+    2. a.Se rendre sur la page : "https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/"
+    2. b.Clicker sur le bouton vert "Clone or download"
+    2. c.Clicker sur le bouton "Download ZIP"
+    2. d.Choisir l'endroit où on veut copier l'objet
 
 ##Driver Mongo pour PHP
 
