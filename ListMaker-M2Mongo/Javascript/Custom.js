@@ -1,4 +1,4 @@
-
+/*
 // Tools
 var leStock = [
 	{
@@ -61,7 +61,8 @@ var leStock = [
 	    	"Story" : "Shock Exo-Armor from the great Tau empire.",
 	    	"Faction" : "Tau"
 	}
-];
+];*/
+var leStock = [];
 var laListe = {
 				    "title" : "",
 				    "Composition" : []
@@ -142,7 +143,7 @@ function replaceStock(faction){
 			txt += "	<input type='hidden' name='id' value='"+element._id+"'>";
 			txt += "	<div class='col-10 border bg-white rounded p-2 text-muted shadow'>";
 			txt += "		<div class='d-flex border-bottom'>";
-			txt += "			<div>"+element.Name+"</div>";
+			txt += "			<div>"+element.name+"</div>";
 			txt += "			<div class='ml-auto'>"+element.pointValue+"pt</div>";
 			txt += "		</div>";
 			txt += "		<div class='d-flex'>";
@@ -167,7 +168,7 @@ function replaceListe(){
 		txt += "	<input type='hidden' name='id' value='"+leStock[pos]._id+"'>";
 		txt += "	<div class='col-10 border bg-white rounded p-2 text-muted shadow'>";
 		txt += "		<div class='d-flex border-bottom'>";
-		txt += "			<div>"+leStock[pos].Name+"</div>";
+		txt += "			<div>"+leStock[pos].name+"</div>";
 		txt += "			<div class='ml-auto'>"+leStock[pos].pointValue+"pt</div>";
 		txt += "		</div>";
 		txt += "		<div class='d-flex'>";
@@ -187,22 +188,56 @@ function replaceListe(){
 function saveListe(){
 	if($("#listTitle").val() == ""){return(alert("Merci de remplir le titre."))}
 	// Sauvegarder en base la bdd
+	//console.log(laListe);
+	$.ajax({
+		method: "POST",
+		url: "http://127.0.0.1:8000/addListe",
+		data: {
+			title : $("#listTitle").val(),
+			composition : laListe.Composition
+		}
+	})
+		.done(function( data ) {
+			console.log(data);
+		});
 	replaceListe();
 }
 
 function loadListe(){
 	if($("#listTitle").val() == ""){return(alert("Merci de remplir le titre."))}
 	// Charger la variable laListe
-	replaceListe();
+	$.ajax({
+		method: "POST",
+		url: "http://127.0.0.1:8000/getListe",
+		data: {
+			title : $("#listTitle").val(),
+		}
+	})
+		.done(function( data ) {
+			console.log(data);
+			laListe = data;
+			replaceListe();
+		});
+	//replaceListe();
 }
 
 
 //------- Fonctionné Onloadé depuis le body -------//
 function _init(){
 	// Remplir la variable LeStock depuis la Bdd
-	selectFactionDeployOption();
-	replaceStock("All");
-	replaceListe();
-	$('#listSelectFactionStock').val("All").change();
+
+	$.ajax({
+		method: "POST",
+		url: "http://127.0.0.1:8000/figurines"
+	})
+	.done(function( data ) {
+		console.log(data);
+		leStock = data;
+		selectFactionDeployOption();
+		replaceStock("All");
+		replaceListe();
+		$('#listSelectFactionStock').val("All").change();
+
+	});
 	return("_INIT Success");
 }

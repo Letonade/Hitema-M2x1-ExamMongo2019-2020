@@ -5,8 +5,10 @@ use App\Document\Price;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ODM\MongoDB\DocumentManager as DocumentManager;
 use App\Document\Figurines;
+use App\Document\Liste;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Created by PhpStorm.
@@ -50,7 +52,7 @@ class PriceController extends AbstractController
      *
      * @Route("/figurines", name="getFigurines")
      */
-    public function testV(DocumentManager $dm)
+    public function figurines(DocumentManager $dm)
     {
 
 
@@ -58,7 +60,7 @@ class PriceController extends AbstractController
         $i = 0;
         foreach ($products as $product)
         {
-            $figurines[$i]['id'] = $product->getId();
+            $figurines[$i]['_id'] = $product->getId();
             $figurines[$i]['name'] = $product->getName();
             $figurines[$i]['Price'] = $product->getPrice();
             $figurines[$i]['ExpectedTime'] = $product->getExpectedTime();
@@ -68,8 +70,69 @@ class PriceController extends AbstractController
             $i++;
         }
 
+        $response = new JsonResponse($figurines);
 
-        return new JsonResponse($figurines);
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        return $response;
+
+
+    }
+
+    /**
+     *
+     * @Route("/addListe", name="addListe")
+     *
+     */
+    public function addListe(Request $request, DocumentManager $dm)
+    {
+        $liste = new Liste();
+
+        $title = $request->get('title');
+
+        $anciens = $dm->getRepository(Liste::class)->findBy((['title' => $title]));
+
+        foreach($anciens as $one)
+        {
+            $dm->remove($one);
+        }
+
+        $composition = $request->get('composition');
+
+        $liste->setTitle($title);
+        $liste->setComposition($composition);
+
+        $dm->persist($liste);
+        $dm->flush();
+
+        $response = new JsonResponse("ok");
+
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        return $response;
+
+
+    }
+
+    /**
+     *
+     * @Route("/getListe", name="getListe")
+     *
+     */
+    public function getListe(Request $request, DocumentManager $dm)
+    {
+        $title = $request->get('title');
+
+        $l = $dm->getRepository(Liste::class)->findOneBy((['title' => $title]));
+
+        $liste["title"] = $l->getTitle();
+        $liste["Composition"] = $l->getComposition();
+
+        $response = new JsonResponse($liste);
+
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        return $response;
 
 
     }
