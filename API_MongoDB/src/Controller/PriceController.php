@@ -58,6 +58,7 @@ class PriceController extends AbstractController
 
         $products = $dm->getRepository(Figurines::class)->findAll();
         $i = 0;
+        $figurines = [];
         foreach ($products as $product)
         {
             $figurines[$i]['_id'] = $product->getId();
