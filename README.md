@@ -197,6 +197,10 @@ Ainsi que dans le .env:
 ```
 MONGODB_URL=mongodb://localhost:27017
 ```
+Pour les réplica on renseigneras chaque serveur : 
+```
+MONGODB_URL=mongodb://localhost:27057,localhost:27058,localhost:27059
+```
 
 ### Lancement du serveur API
 
