@@ -175,10 +175,10 @@ rs.add("localhost:27059");
 mongod --port 30000 --dbpath <VotreDestinationDeStockage>\data\arb --replSet rs0
 ->Sur le Principal ajouter l'arbitre dans le Set
 *Se connecter au Replica principal avec mongo --port 27057
-rs.addArb("localhost:27030")
+rs.addArb("localhost:30000")
 ->Importer les fichiers figurines.json et listes.json
-mongoimport --port 27058 --db PathToWarhammer --collection figurines <racineProjet>/assets/figurines.json
-mongoimport --port 27058 --db PathToWarhammer --collection listes <racineProjet>/assets/listes.json
+mongoimport --port 27058 --db symfony --collection Figurines <racineProjet>/assets/figurines.json
+mongoimport --port 27058 --db symfony --collection Listes <racineProjet>/assets/listes.json
 ```
 
 ## Serveur API
