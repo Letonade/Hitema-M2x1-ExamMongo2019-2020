@@ -181,12 +181,12 @@ mongoimport --port 27058 --db PathToWarhammer --collection figurines <racineProj
 mongoimport --port 27058 --db PathToWarhammer --collection listes <racineProjet>/assets/listes.json
 ```
 
-##Serveur API
+## Serveur API
 
 ### Changement de port dans API
 
-Il faut se rendre dans le répertoire du projet et aller dans **API_MongoDB/config** et modifier le fichier "services.yaml".
-Dans les lignes suivantes il faut modifier le port 27017 au port du serveur Primaire :
+Dans le répertoire du projet ouvrir le fichier **API_MongoDB/config/services.yaml** afin de le modifier.
+Dans les lignes suivantes il faut modifier le port 27017 par le port du serveur Primaire :
 
 ```
 mongodb_server: "mongodb://localhost:27017"
